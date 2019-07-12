@@ -1,0 +1,1 @@
+void drawTopscreenBg(u16 *vramPointer);
