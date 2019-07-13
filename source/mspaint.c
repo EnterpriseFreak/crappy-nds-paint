@@ -4,6 +4,7 @@
 
 static u8 curColID = 0;
 static u16 curColor = ARGB16(1, 0, 0, 0);
+touchPosition oldTouch;
 
 void mspaint(u16 *vramPointer)
 {
@@ -44,6 +45,27 @@ void mspaint(u16 *vramPointer)
 
     if (kHeld & KEY_TOUCH)
     {
+        if (touch.py < 18)
+        {
+            if (touch.px > 2 && touch.px < 18)
+                curColID = 0;
+            
+            if (touch.px > 18 && touch.px < 30)
+                curColID = 1;
+
+            if (touch.px > 34 && touch.px < 46)
+                curColID = 2;
+
+            if (touch.px > 50 && touch.px < 62)
+                curColID = 3;
+
+            if (touch.px > 66 && touch.px < 78)
+                curColID = 4;
+
+            if (touch.px > 82 && touch.px < 92)
+                curColID = 5;
+        }
+
         if (touch.py > 19)
         {
             if (curColID == 0)
@@ -77,4 +99,5 @@ void mspaint(u16 *vramPointer)
             }
         }
     }
+
 }
